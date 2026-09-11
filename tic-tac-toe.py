@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 
-print("\nWelcome to Tic-Tac-Toe!\n")
+print("Welcome to Tic-Tac-Toe!")
 
-top_right = 'X'
-top_middle = 'O'
 top_left = ' '
+top_middle = 'O'
+top_right = 'X'
 
-middle_right = ' '
-middle_middle = 'X'
 middle_left = ' '
+middle_middle = 'X'
+middle_right = ' '
 
-lower_right = ' '
-lower_middle = ' '
-lower_left = 'O'
+bottom_left = 'O'
+bottom_middle = ' '
+bottom_right = ' '
 
-#
-print(f" {top_right} | {top_middle} | {top_left}")
+
+print(f" {top_left} | {top_middle} | {top_right}")
 print("---+---+---")
-print(f" {middle_right} | {middle_middle} | {middle_left}")
+print(f" {middle_left} | {middle_middle} | {middle_right}")
 print("---+---+---")
-print(f" {lower_right} | {lower_middle} | {lower_left}")
+print(f" {bottom_left} | {bottom_middle} | {bottom_right}")
 
 print("\n")
