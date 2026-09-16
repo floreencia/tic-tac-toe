@@ -2,14 +2,23 @@
 
 ## functions
 
-def print_board( top_left, top_middle, top_right,
-                middle_left, middle_middle, middle_right,
-                bottom_left, bottom_middle, bottom_right):
-    print(f" {top_left} | {top_middle} | {top_right}")
+winning_combinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
+
+def print_board(board):
+    print(f" {board[0]} | {board[1]} | {board[2]}")
     print("---+---+---")
-    print(f" {middle_left} | {middle_middle} | {middle_right}")
+    print(f" {board[3]} | {board[4]} | {board[5]}")
     print("---+---+---")
-    print(f" {bottom_left} | {bottom_middle} | {bottom_right}")
+    print(f" {board[6]} | {board[7]} | {board[8]}")
 
 
 def get_postion():
@@ -20,27 +29,14 @@ def get_postion():
         print("Invalid input! Please enter a number from 1 to 9.")
         return None
     
-def check_winner(player, top_left, top_middle, top_right,
-                middle_left, middle_middle, middle_right,
-                bottom_left, bottom_middle, bottom_right):
+def check_winner(player, board):
     # check if player won
-    if top_left == player and top_middle == player and top_right == player:
-        return True
-    elif middle_left == player and middle_middle == player and middle_right == player:
-        return True
-    elif bottom_left == player and bottom_middle == player and bottom_right == player:
-        return True
-    elif top_left == player and middle_left == player and bottom_left == player:
-        return True
-    elif top_middle == player and middle_middle == player and bottom_middle == player:
-        return True
-    elif top_right == player and middle_right == player and bottom_right == player:
-        return True
-    elif top_left == player and middle_middle == player and bottom_right == player:
-        return True
-    elif top_right == player and middle_middle == player and bottom_left == player:
-        return True
-    else:
+    for combination in winning_combinations:
+        if (board[combination[0]] == player and
+        board[combination[1]] == player and
+        board[combination[2]] == player):
+            return True
+        
         return False
 
 
@@ -48,54 +44,27 @@ print("Welcome to Tic-Tac-Toe!")
 player = input("Are you playing X or O? ")
 
 # initalise board
-top_left = ' '
-top_middle = ' '
-top_right = ' '
+board = ["X", "X", "X", "X" ,"X" ," " ," " ," " ," "]
 
-middle_left = ' '
-middle_middle = ' '
-middle_right = ' '
-
-bottom_left = ' '
-bottom_middle = ' '
-bottom_right = ' '
-
-print_board(top_left, top_middle, top_right,
-            middle_left, middle_middle, middle_right,
-            bottom_left, bottom_middle, bottom_right)
+print_board(board)
 
 position = get_postion()
 
-# update board with user input
-if position == 1:
-    top_left = player
-elif position == 2:
-    top_middle = player
-elif position == 3:
-    top_right = player
-elif position == 4:
-    middle_left = player
-elif position == 5:
-    middle_middle = player
-elif position == 6:
-    middle_right = player
-elif position == 7:
-    bottom_left = player
-elif position == 8:
-    bottom_middle = player
-elif position == 9:
-    bottom_right = player
-else:
-    print("That is not a valid position.")
+# update board with user input & check if position is taken
+if position is not None:
+    if 1 <= position <= 9:
+        if board[position - 1] == " ":
+            board[position - 1] = player
+        else:
+            print("That position is already occupied.")
+    else:
+        print("Invalid input. Please choose a position from 1 to 9.")
 
 # print board state
-print_board(top_left, top_middle, top_right,
-                middle_left, middle_middle, middle_right,
-                bottom_left, bottom_middle, bottom_right)
+print_board(board)
 
-if check_winner( player, top_left, top_middle, top_right,
-                middle_left, middle_middle, middle_right,
-                bottom_left, bottom_middle, bottom_right):
+
+if check_winner( player, board):
     print(f"{player} wins!")
 else:
     print("There is no winner yet")
