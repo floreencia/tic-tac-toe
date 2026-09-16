@@ -1,5 +1,26 @@
 #!/usr/bin/env python3
 
+## functions
+
+def print_board( top_left, top_middle, top_right,
+                middle_left, middle_middle, middle_right,
+                bottom_left, bottom_middle, bottom_right):
+    print(f" {top_left} | {top_middle} | {top_right}")
+    print("---+---+---")
+    print(f" {middle_left} | {middle_middle} | {middle_right}")
+    print("---+---+---")
+    print(f" {bottom_left} | {bottom_middle} | {bottom_right}")
+
+
+def get_postion():
+    try:
+        position = int(input("Choose a position from 1 to 9: "))
+        return position
+    except ValueError:
+        print("Invalid input! Please enter a number from 1 to 9.")
+        return None
+    
+
 print("Welcome to Tic-Tac-Toe!")
 player = input("Are you playing X or O? ")
 
@@ -16,7 +37,11 @@ bottom_left = ' '
 bottom_middle = ' '
 bottom_right = ' '
 
-position = int(input("Choose a position from 1 to 9: "))
+print_board(top_left, top_middle, top_right,
+                middle_left, middle_middle, middle_right,
+                bottom_left, bottom_middle, bottom_right)
+
+position = get_postion()
 
 # update board with user input
 if position == 1:
@@ -41,12 +66,9 @@ else:
     print("That is not a valid position.")
 
 # print board state
-print("\n")
-print(f" {top_left} | {top_middle} | {top_right}")
-print("---+---+---")
-print(f" {middle_left} | {middle_middle} | {middle_right}")
-print("---+---+---")
-print(f" {bottom_left} | {bottom_middle} | {bottom_right}")
+print_board(top_left, top_middle, top_right,
+                middle_left, middle_middle, middle_right,
+                bottom_left, bottom_middle, bottom_right)
 
 print("\n")
 
