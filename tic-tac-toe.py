@@ -20,6 +20,29 @@ def get_postion():
         print("Invalid input! Please enter a number from 1 to 9.")
         return None
     
+def check_winner(player, top_left, top_middle, top_right,
+                middle_left, middle_middle, middle_right,
+                bottom_left, bottom_middle, bottom_right):
+    # check if player won
+    if top_left == player and top_middle == player and top_right == player:
+        return True
+    elif middle_left == player and middle_middle == player and middle_right == player:
+        return True
+    elif bottom_left == player and bottom_middle == player and bottom_right == player:
+        return True
+    elif top_left == player and middle_left == player and bottom_left == player:
+        return True
+    elif top_middle == player and middle_middle == player and bottom_middle == player:
+        return True
+    elif top_right == player and middle_right == player and bottom_right == player:
+        return True
+    elif top_left == player and middle_middle == player and bottom_right == player:
+        return True
+    elif top_right == player and middle_middle == player and bottom_left == player:
+        return True
+    else:
+        return False
+
 
 print("Welcome to Tic-Tac-Toe!")
 player = input("Are you playing X or O? ")
@@ -38,8 +61,8 @@ bottom_middle = ' '
 bottom_right = ' '
 
 print_board(top_left, top_middle, top_right,
-                middle_left, middle_middle, middle_right,
-                bottom_left, bottom_middle, bottom_right)
+            middle_left, middle_middle, middle_right,
+            bottom_left, bottom_middle, bottom_right)
 
 position = get_postion()
 
@@ -70,24 +93,9 @@ print_board(top_left, top_middle, top_right,
                 middle_left, middle_middle, middle_right,
                 bottom_left, bottom_middle, bottom_right)
 
-print("\n")
-
-# check if player won
-if top_left == player and top_middle == player and top_right == player:
-    print(player, "wins!")
-elif middle_left == player and middle_middle == player and middle_right == player:
-    print(player, "wins!")
-elif bottom_left == player and bottom_middle == player and bottom_right == player:
-    print(player, "wins!")
-elif top_left == player and middle_left == player and bottom_left == player:
-    print(player, "wins!")
-elif top_middle == player and middle_middle == player and bottom_middle == player:
-    print(player, "wins!")
-elif top_right == player and middle_right == player and bottom_right == player:
-    print(player, "wins!")
-elif top_left == player and middle_middle == player and bottom_right == player:
-    print(player, "wins!")
-elif top_right == player and middle_middle == player and bottom_left == player:
-    print(player, "wins!")
+if check_winner( player, top_left, top_middle, top_right,
+                middle_left, middle_middle, middle_right,
+                bottom_left, bottom_middle, bottom_right):
+    print(f"{player} wins!")
 else:
-    print(f"Player {player} hasn’t won.\n")
+    print("There is no winner yet")
