@@ -18,7 +18,7 @@ bottom_right = ' '
 
 position = int(input("Choose a position from 1 to 9: "))
 
-# update board with user inmput
+# update board with user input
 if position == 1:
     top_left = player
 elif position == 2:
@@ -32,7 +32,7 @@ elif position == 5:
 elif position == 6:
     middle_right = player
 elif position == 7:
-    bottom_left_left = player
+    bottom_left = player
 elif position == 8:
     bottom_middle = player
 elif position == 9:
@@ -50,7 +50,7 @@ print(f" {bottom_left} | {bottom_middle} | {bottom_right}")
 
 print("\n")
 
-# check game status
+# check if player won
 if top_left == player and top_middle == player and top_right == player:
     print(player, "wins!")
 elif middle_left == player and middle_middle == player and middle_right == player:
@@ -68,5 +68,4 @@ elif top_left == player and middle_middle == player and bottom_right == player:
 elif top_right == player and middle_middle == player and bottom_left == player:
     print(player, "wins!")
 else:
-    print("There is no winner yet.\n")
-
+    print(f"Player {player} hasn’t won.\n")
