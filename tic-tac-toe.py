@@ -38,13 +38,20 @@ def check_winner(player, board):
             return True
         
         return False
+    
+def board_is_full(board):
+    for position in board:
+        if position == " ":
+            return False
+
+    return True
 
 
 print("Welcome to Tic-Tac-Toe!")
 player = input("Are you playing X or O? ")
 
 # initalise board
-board = ["X", "X", "X", "X" ,"X" ," " ," " ," " ," "]
+board = ["X", "X", "O", "X" ,"O" ,"X" ,"O" ,"X" ,"O"]
 
 print_board(board)
 
@@ -66,5 +73,7 @@ print_board(board)
 
 if check_winner( player, board):
     print(f"{player} wins!")
+elif board_is_full(board):
+    print("It's a draw")
 else:
     print("There is no winner yet")
