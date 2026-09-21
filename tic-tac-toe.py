@@ -54,7 +54,9 @@ def board_is_full(board):
 print("Welcome to Tic-Tac-Toe!")
 
 ## initalise board
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+board = [" ", " ", " ", 
+         " ", " ", " ", 
+         " ", " ", " "]
 # board = ["X", "X", " ", "X" ,"O" ,"X" ,"O" ,"X" ,"O"]
 print_board(board)
 
