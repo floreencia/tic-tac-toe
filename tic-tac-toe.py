@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 ## functions
-
 winning_combinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -21,12 +20,17 @@ def print_board(board):
     print(f" {board[6]} | {board[7]} | {board[8]}")
 
 
-def get_postion():
+def get_position():
     try:
         position = int(input("Choose a position from 1 to 9: "))
-        return position
-    except ValueError:
+    except ValueError: # not a number
         print("Invalid input! Please enter a number from 1 to 9.")
+        return None
+    
+    if position >= 1 and position <= 9: # number but not in the right range
+            return position
+    else:
+        print("Enter a number between 1 and 9 ")
         return None
     
 def check_winner(player, board):
@@ -48,29 +52,25 @@ def board_is_full(board):
 
 
 print("Welcome to Tic-Tac-Toe!")
+
+## initalise board
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+# board = ["X", "X", " ", "X" ,"O" ,"X" ,"O" ,"X" ,"O"]
+print_board(board)
+
+## Get input, check if position is taken, and update board
 player = input("Are you playing X or O? ")
+position = get_position() 
 
-# initalise board
-board = ["X", "X", "O", "X" ,"O" ,"X" ,"O" ,"X" ,"O"]
-
-print_board(board)
-
-position = get_postion()
-
-# update board with user input & check if position is taken
 if position is not None:
-    if 1 <= position <= 9:
-        if board[position - 1] == " ":
-            board[position - 1] = player
-        else:
-            print("That position is already occupied.")
+    if board[position - 1] == " ":
+        board[position - 1] = player
     else:
-        print("Invalid input. Please choose a position from 1 to 9.")
+        print("That position is already occupied.")
 
-# print board state
 print_board(board)
 
-
+## check game status
 if check_winner( player, board):
     print(f"{player} wins!")
 elif board_is_full(board):
