@@ -41,7 +41,7 @@ def check_winner(player, board):
         board[combination[2]] == player):
             return True
         
-        return False
+    return False
     
 def board_is_full(board):
     for position in board:
@@ -50,32 +50,50 @@ def board_is_full(board):
 
     return True
 
-
-print("Welcome to Tic-Tac-Toe!")
-
 ## initalise board
 board = [" ", " ", " ", 
          " ", " ", " ", 
          " ", " ", " "]
-# board = ["X", "X", " ", "X" ,"O" ,"X" ,"O" ,"X" ,"O"]
+
+board = ["X", " ", " ",
+         "X", " ", " ", 
+         "X", " ", " "]
+
+print("Welcome to Tic-Tac-Toe!")
 print_board(board)
 
-## Get input, check if position is taken, and update board
-player = input("Are you playing X or O? ")
-position = get_position() 
+player_name = input("Player X, what's your name? ")
+players = {"X": player_name}
+player_name = input("Player O, what's your name? ")
+players["O"] = player_name
+# print(f"{players["X"]}, {players["O"]}")
 
-if position is not None:
-    if board[position - 1] == " ":
-        board[position - 1] = player
+current_player = "X"
+game_is_running = True
+
+while game_is_running: 
+    print(players[current_player] + "'s turn")
+
+    ## Get input, check if position is taken, and update board
+    position = get_position() 
+
+    if position is not None:
+        if board[position - 1] == " ":
+            board[position - 1] = current_player
+        else:
+            print("That position is already occupied.")
+
+    print_board(board)
+
+    ## check game status
+    if check_winner( current_player, board):
+        print(f"{current_player} wins!")
+        game_is_running = False
+    elif board_is_full(board):
+        print("It's a draw")
+        game_is_running = False
     else:
-        print("That position is already occupied.")
-
-print_board(board)
-
-## check game status
-if check_winner( player, board):
-    print(f"{player} wins!")
-elif board_is_full(board):
-    print("It's a draw")
-else:
-    print("There is no winner yet")
+        if current_player == "X":
+            current_player = "O"
+        else:
+            current_player = "X"
