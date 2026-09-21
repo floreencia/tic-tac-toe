@@ -56,9 +56,6 @@ board = [" ", " ", " ",
          " ", " ", " ", 
          " ", " ", " "]
 
-board = ["X", " ", " ",
-         "X", " ", " ", 
-         "X", " ", " "]
 
 print("Welcome to Tic-Tac-Toe!")
 print_board(board)
