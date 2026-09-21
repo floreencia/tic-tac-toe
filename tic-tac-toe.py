@@ -21,17 +21,18 @@ def print_board(board):
 
 
 def get_position():
-    try:
+    while True:
+      try:
         position = int(input("Choose a position from 1 to 9: "))
-    except ValueError: # not a number
-        print("Invalid input! Please enter a number from 1 to 9.")
-        return None
-    
-    if position >= 1 and position <= 9: # number but not in the right range
-            return position
-    else:
-        print("Enter a number between 1 and 9 ")
-        return None
+      except ValueError:
+        print("Please enter a number from 1 to 9.")
+        continue
+
+      if position < 1 or position > 9 or board[position - 1] != " ":
+        print("Invalid input, enter a number between 1 and 9")        
+      else:
+        return position
+
     
 def check_winner(player, board):
     # check if player won
