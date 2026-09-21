@@ -33,6 +33,9 @@ def get_position():
       else:
         return position
 
+def make_move(position, board, player):
+    board[position - 1] = player
+
     
 def check_winner(player, board):
     # check if player won
@@ -64,7 +67,6 @@ player_name = input("Player X, what's your name? ")
 players = {"X": player_name}
 player_name = input("Player O, what's your name? ")
 players["O"] = player_name
-# print(f"{players["X"]}, {players["O"]}")
 
 current_player = "X"
 game_is_running = True
@@ -72,14 +74,9 @@ game_is_running = True
 while game_is_running: 
     print(players[current_player] + "'s turn")
 
-    ## Get input, check if position is taken, and update board
     position = get_position() 
 
-    if position is not None:
-        if board[position - 1] == " ":
-            board[position - 1] = current_player
-        else:
-            print("That position is already occupied.")
+    make_move(position, board, current_player)
 
     print_board(board)
 
