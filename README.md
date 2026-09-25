@@ -31,5 +31,5 @@ Follow the instructions in the terminal and take turns placing X and O.
 
 ## Authors
 
-Florencia Noriega, David
+Florencia Noriega, David, Cristina
 
