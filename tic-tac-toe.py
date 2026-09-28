@@ -19,7 +19,6 @@ def print_board(board):
     print("---+---+---")
     print(f" {board[6]} | {board[7]} | {board[8]}")
 
-
 def get_position():
     while True:
       try:
@@ -27,16 +26,14 @@ def get_position():
       except ValueError:
         print("Please enter a number from 1 to 9.")
         continue
-
-      if position < 1 or position > 9 or board[position - 1] != " ":
-        print("Invalid input, enter a number between 1 and 9")        
+      if position >=1  and position <= 9 and board[position - 1] == " ":
+        return position        
       else:
-        return position
+        print("Invalid input, enter a number between 1 and 9.")
 
 def make_move(position, board, player):
     board[position - 1] = player
 
-    
 def check_winner(player, board):
     # check if player won
     for combination in winning_combinations:
