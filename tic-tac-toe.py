@@ -27,26 +27,27 @@ def get_position():
         print("Please enter a number from 1 to 9.")
         continue
       if position > 1  and position < 9 and board[position - 1] == " ":
-        return position        
-      else:
         print("Invalid input, enter a number between 1 and 9.")
+      else:
+        return position        
+        
 
 def make_move(position, board, player):
-    board[position - 1] = player
+    board[position] = player
 
 def check_winner(player, board):
     # check if player won
     for combination in winning_combinations:
         if (board[combination[0]] == player and
         board[combination[1]] == player and
-        board[combination[2]] == player):
+        [combination[2]] == player):
             return True
         
     return False
     
 def board_is_full(board):
     for position in board:
-        if position == " ":
+        if position == "":
             return False
 
     return True
@@ -69,7 +70,7 @@ current_player = "X"
 game_is_running = True
 
 while game_is_running: 
-    print(players[current_player] + "'s turn")
+    print(players[current_player] + "your turn")
 
     position = get_position() 
 
