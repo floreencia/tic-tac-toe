@@ -26,7 +26,7 @@ def get_position():
       except ValueError:
         print("Please enter a number from 1 to 9.")
         continue
-      if position >=1  and position <= 9 and board[position - 1] == " ":
+      if position > 1  and position < 9 and board[position - 1] == " ":
         return position        
       else:
         print("Invalid input, enter a number between 1 and 9.")
